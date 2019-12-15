@@ -1,0 +1,28 @@
+<div class="card mt-2" style="width:100%">
+  <div class="card-body">
+    <h5 class="card-title text-primary">Weather Today</h5>
+    <h1><span id="degree"></span>°C</h1>
+    <p class="font-weight-lighter mb-0">湿度：<span id="humidity"></span></p>
+    <p class="font-weight-lighter mb-0">天气：<span id="weather"></span></p>
+    <p class="font-weight-lighter mb-0">压强：<span id="pressure"></span>帕</p>
+
+    <p class="font-weight-bold mt-3 mb-0" style="color:#5d2fc1">Tips:</p>
+    <p class="font-weight-bold mb-0"><font id="tip1" size=1></font></p>
+    <p class="font-weight-bold mb-0"><font id="tip2" size=1></font></p>
+    <!--省份-->
+    <div class="input-group input-group-sm mb-3 mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >省份</span>
+      </div>
+      <input type="text" class="form-control" name="province">
+    </div>
+    <!--城市-->
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" >城市</span>
+      </div>
+      <input type="text" class="form-control" name="city">
+    </div>
+    <button type="button" id="wbtn" class="btn btn-light">查询</button>
+  </div>
+</div>

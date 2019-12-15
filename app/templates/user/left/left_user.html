@@ -1,0 +1,9 @@
+<a href={{ url_for('user.show') }} class="list-group-item list-group-item-action
+{{ check_active(request.path, url_for('user.show')) }}
+"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>
+个人信息</a>
+<a href={{ url_for('user.modify') }} class="list-group-item list-group-item-action
+{{ check_active(request.path, url_for('user.modify')) }}
+"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>
+修改信息</a>
+{% include 'user/left/weather.html' %}

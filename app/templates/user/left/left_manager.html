@@ -1,0 +1,25 @@
+<a href={{ url_for('manager.show') }} class="list-group-item list-group-item-action
+{{ check_active(request.path, url_for('manager.show')) }}
+"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>
+用户管理</a>
+<a href={{ url_for('manager.book') }} class="list-group-item list-group-item-action
+{{ check_active(request.path, url_for('manager.book')) }}
+"><i class="fa fa-book mr-2" aria-hidden="true"></i>
+图书管理</a>
+<a href={{ url_for('manager.add_book') }} class="list-group-item list-group-item-action
+{{ check_active(request.path, url_for('manager.add_book')) }}
+"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>
+图书录入</a>
+<a href={{ url_for('auth.register') }} class="list-group-item list-group-item-action
+"><i class="fa fa-briefcase mr-2" aria-hidden="true"></i></i>
+证件办理</a>
+<div class="mt-3">
+{% if request.path == url_for('manager.show') %}
+    <form class="form-inline" method="POST" action="{{url_for('index')}}" >
+    <div class="input-group mb-3 input-group-lg">
+        <input class="form-control mr-sm-2" type="search" name="search" placeholder="查找用户" aria-label="Search">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </div>
+    </form>
+{% endif %}
+</div>

@@ -1,0 +1,32 @@
+<form action={{ url_for('user.modify') }} method="POST" >
+    <div class="form-group">
+      <label for="username" class="text-primary">用户名</label>
+      <input name="username" type="text" class="form-control" id="username" value={{user.username}} disabled>
+    </div>
+    <div class="form-group">
+        <label for="type" class="text-primary">身份</label>
+        <select name='type' class="form-control" disabled>
+            <option value=0>学生</option>
+            <option value=1>教师</option>
+          </select>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="text-primary">联系方式</label>
+      <input name="phone" type="tel" class="form-control" id="phone" value={{user.phone}}>
+      {{ render_error(form, 'phone') }}
+    </div>
+    <div class="form-group">
+      <label for="password" class="text-primary">密码</label>
+      <input name="password" type="password" class="form-control" id="password" value={{user.password}}>
+      {{ render_error(form, 'password') }}
+    </div>
+    <div class="form-group">
+      <label for="confirm" class="text-primary">确认密码</label>
+      <input name="confirm" type="password" class="form-control" id="confirm" value={{user.password}}>
+      {{ render_error(form, 'confirm') }}
+    </div>
+    <button type="submit" class="btn btn-primary">修改</button>
+  </form>
+  
+  
+  

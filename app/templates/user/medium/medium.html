@@ -1,0 +1,50 @@
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ url_for('static', filename='avatar.jpeg')}}" class="card-img" alt="头像">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <span class="text-primary font-weight-bolder">{{ render_type(user.identity) }}</span>
+          {{ user.username }}
+        </h5>
+        <p class="card-text">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          {{user.phone}}
+        </p>
+        <p class="card-text"> 
+          <small class="text-muted">借阅书目上限：{{identity.borrow_num}}本</small>
+        </p>
+        <p class="card-text">
+          <small class="text-muted">借阅时间上限：{{identity.duration}}天</small>
+        </p>
+        <p class="card-text">
+          <i class="fa fa-calendar" aria-hidden="true"></i> 
+          <small class="text-muted">借阅证创建时间：{{ user.created_at }}</small>
+        </p>
+    </div>
+  </div>
+</div>
+</div>
+<div style="overflow-y:scroll; height: 200px; overflow-x:hidden">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">图书名</th>
+            <th scope="col">借阅时间</th>
+            <th scope="col">截止日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for borrow in borrows %}
+          <tr>
+            <td scope="row">{{ borrow.get_book().name }}</td>
+            <td>{{ borrow.start }}</td>
+            <td>{{ borrow.due }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>

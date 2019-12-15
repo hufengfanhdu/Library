@@ -1,0 +1,11 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+<div class="jumbotron row align-items-center mt-5" style="height:100%; width: 100%;">
+    <h1 class="col text-center">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        {{ message }}😭</h1>
+    <p class="col">
+        {{error}}
+    </p>
+</div>
+{% endblock content %}

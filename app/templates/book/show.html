@@ -1,0 +1,40 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+<div class="jumbotron px-5 mb-0" style="height:100%; width: 100%">
+    <div class="card" style="height:100%">
+        <div class="card-header bg-white">
+            <ul class="nav nav-pills card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link"
+                href={{ url_for('book.show_book') }}>馆藏图书</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"
+                href={{ url_for('book.show_book', category='CS') }}>计算机</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"
+                href={{ url_for('book.show_book', category='MATH') }}>数学</a>
+              </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="card-group row justify-content-center">
+                {% for book in books %}
+                <div class="media position-relative col-3 p-0 mb-2 mx-3 border">
+                    <img src={{url_for('static', filename=book.img)}} class="mr-3" style="width: 47%" alt="...">
+                    <div class="media-body p-3">
+                        <h5 class="mt-0">{{book.name}}</h5>
+                        <p>{{book.publish}}</p>
+                        <a href={{url_for('book.book', id=book.id)}} class="stretched-link">详细信息</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {{ render_pagination(pagination, 'book.show_book') }}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

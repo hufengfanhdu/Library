@@ -1,0 +1,40 @@
+<form action={{ url_for('auth.register') }} method="POST" >
+  <div class="form-group">
+    <label for="id" class="text-primary">学号</label>
+    <input name="id" type="text" class="form-control" id="id" aria-describedby="idHelp">
+    <small id="idHelp" class="form-text text-muted">请输入您的学号</small>
+    {{ render_error(form, 'id') }}
+  </div>
+  <div class="form-group">
+      <label for="username" class="text-primary">用户名</label>
+      <input name="username" type="text" class="form-control" id="username" aria-describedby="nameHelp">
+      <small id="nameHelp" class="form-text text-muted">请输入您的用户名</small>
+      {{ render_error(form, 'username') }}
+  </div>
+  <div class="form-group">
+      <label for="phone" class="text-primary">手机</label>
+      <input name="phone" type="text" class="form-control" id="phone" aria-describedby="phoneHelp">
+      <small id="phoneHelp" class="form-text text-muted">请输入您的手机</small>
+      {{ render_error(form, 'phone') }}
+  </div>
+  <div class="form-group">
+      <label for="type" class="text-primary">身份</label>
+      <select name='type' class="form-control">
+          <option value=0>学生</option>
+          <option value=1>教师</option>
+        </select>
+  </div>
+  <div class="form-group">
+    <label for="password" class="text-primary">密码</label>
+    <input name="password" type="password" class="form-control" id="password" aria-describedby="pwdHelp">
+    <small id="pwdHelp" class="form-text text-muted">请输入您的密码</small>
+    {{ render_error(form, 'password') }}
+  </div>
+  <div class="form-group">
+      <label for="confirm" class="text-primary">确认密码</label>
+      <input name="confirm" type="password" class="form-control" id="confirm" aria-describedby="confirmHelp">
+      <small id="confirmHelp" class="form-text text-muted">请再次输入您的密码</small>
+      {{ render_error(form, 'confirm') }}
+  </div>
+  <button type="submit" class="btn btn-primary">注册</button>
+</form>

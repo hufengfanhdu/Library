@@ -1,0 +1,36 @@
+<div class="card" style="height: 60%; overflow-y: scroll; overflow-x: hidden">
+    <table class="table">
+            <thead>
+                <tr class="thead-dark">
+                    <th  scope="col">编号</th>
+                    <th  scope="col">书名</th>
+                    <th  scope="col">作者</th>
+                    <th  scope="col">出版商</th>
+                    <th  scope="col">更多操作</th>
+                </tr>
+            </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <th scope="row">{{book.id}}</th>
+                    <td>{{book.name}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.publish}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="btn-group-sm mr-1">
+                                <form action={{ url_for('manager.delete_book', id=book.id) }} method="POST"
+                                onsubmit="return confirm('您确定要下架吗？');" class="col p-0">
+                                    <button type="sumbit" class="btn btn-secondary">下架书目</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>     
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    
+      

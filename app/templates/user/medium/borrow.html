@@ -1,0 +1,40 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">图书名</th>
+        <th scope="col">借阅时间</th>
+        <th scope="col">截止日期</th>
+        <th scope="col">应缴金额</th>
+        <th scope="col">更多操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for borrow in borrows %}
+        <tr>
+        <td scope="row">{{ borrow.get_book().name }}</td>
+        <td>{{ borrow.start }}</td>
+        <td>{{ borrow.due }}</td>
+        <td>
+            {% if (borrow.due-now).days < 0 %}
+                {{ (borrow.due-now).days * borrow.get_user().get_detail().fine }}
+            {% else %}
+                无
+            {% endif %}
+        </td>
+        <td>
+            <div class="btn-group">
+                <form action={{ url_for('manager.renew') }} method="POST"
+                onsubmit="return confirm('您确定要续借吗？');" class="col p-0 mr-1">
+                    <input name="id" value={{borrow.id}} hidden>
+                    <button type="sumbit" class="btn btn-secondary">续借</button>
+                </form>
+                <form action={{ url_for('manager.delete_borrow', id=borrow.id)}} method="POST"
+                onsubmit="return confirm('您确定要还书吗？');" class="col p-0">
+                    <button type="sumbit" class="btn btn-secondary">还书</button>
+                </form>
+            </div>
+        </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

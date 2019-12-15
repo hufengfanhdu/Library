@@ -1,0 +1,31 @@
+{% extends './layout/layout.html' %}
+{% block title %}Auth{% endblock title %}
+{% block content %}
+<div class="card" style="width: 50%; height: 70%; overflow: scroll;">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a  href={{ url_for('auth.login') }} class="nav-link
+          {{ check_active(request.path, url_for('auth.login')) }}"
+          ><i class="fa fa-id-card-o mr-2" aria-hidden="true"></i>
+            用户登录</a>
+        </li>
+        <li class="nav-item">
+          <a href={{ url_for('auth.register') }} class="nav-link
+          {{ check_active(request.path, url_for('auth.register')) }}"
+          ><i class="fa fa-address-card mr-2" aria-hidden="true"></i>
+            用户注册</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      {{ render_flash() }}
+      {% if request.path == url_for('auth.login') %}
+        {% include 'auth/login.html' %}
+      {% else %}
+        {% include 'auth/register.html' %}
+      {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

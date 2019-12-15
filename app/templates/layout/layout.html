@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{ bootstrap.load_css() }}
+  {{ bootstrap.load_js() }}
+  <!-- 插入jquery -->
+  <script src="{{url_for('static', filename='jquery.js')}}"></script>
+  <script type=text/javascript>
+  var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+  </script>
+  <link rel="stylesheet" href="{{url_for('static', filename ='font-awesome-4.7.0/css/font-awesome.min.css')}}" type="text/css">
+  {% block head %}{% endblock head %}
+  <title>{% block title %}{% endblock title %}-QuickBuy</title>
+</head>
+
+<body background="{{ url_for('static', filename="library.jpg") }}">
+  {% from 'layout/macros.html' import render_error, check_active, render_flash, render_type, render_pagination %}
+  {% include 'layout/header.html' %}
+  <div class="d-flex align-items-center justify-content-center" style="height:750px; margin-top:67px">
+    {% block content %}
+    {% endblock content %}
+  </div>
+  {% include 'layout/footer.html' %}
+</body>

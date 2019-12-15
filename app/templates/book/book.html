@@ -1,0 +1,62 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+<div class="jumbotron px-5 mb-0" style="height:100%; width: 100%">
+    <div class="card d-flex align-items-center justify-content-center py-3" style="height:100%; overflow-y: scroll">
+        <div class="row no-gutters border">
+            <div class="col-4">
+                <img src={{ url_for('static', filename=book.img)}} class="card-img" style="width: 80%">
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    <h5 class="card-title">书名：<span class="text-primary">{{book.name}}</span></h5>
+                    <p class="card-text">作者：{{book.author}}</p>
+                    <p class="card-text">出版商：{{book.publish}}</p>
+                    <p class="card-text">购入价格：{{book.price}}</p>
+                    <p class="card-text">图书归类：{{book.category}}</p>
+                    <p class="card-text"><small class="text-muted">馆藏数量：{{book.amount}}</small></p>
+                </div>
+            </div>
+        </div>
+            <table class="table table-bordered my-3" style="width: 95%">
+                <thead>
+                    <tr>
+                    <th scope="col">借阅人</th>
+                    <th scope="col">借出时间</th>
+                    <th scope="col">截止时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for borrow in borrows %}
+                            <td>{{borrow.user_id}}</td>
+                            <td>{{borrow.start}}</td>
+                            <td>{{borrow.due}}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        {% if current_user.identity == 3 %}
+        <div style="width: 96%">
+            <button type="button" class="btn btn-success btn-lg btn-block mb-2"
+            data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            添加借阅人
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <form action={{ url_for('manager.borrow') }} method="POST">
+                        <div class="form-group">
+                            <label for="id" class="text-primary">借阅证编号</label>
+                            <input name="id" type="text" class="form-control" id="id" aria-describedby="idHelp">
+                            <small id="idHelp" class="form-text text-muted">请输入借阅证编号</small>
+                        </div>
+                        <input name="book_id" type="text" value={{book.id}} hidden>
+                        <button type="submit" class="btn btn-primary">借阅</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

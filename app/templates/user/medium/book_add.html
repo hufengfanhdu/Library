@@ -1,0 +1,39 @@
+<form action={{ url_for('manager.add_book') }} method="POST" style="height: 70%; overflow-y: scroll">
+        <div class="form-group">
+            <label for="name" class="text-primary">书名</label>
+            <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp">
+            <small id="nameHelp" class="form-text text-muted">请输入录入的书名</small>
+            {{ render_error(form, 'name') }}
+        </div>
+        <div class="form-group">
+            <label for="author" class="text-primary">作者</label>
+            <input name="author" type="text" class="form-control" id="author" aria-describedby="authorHelp">
+            <small id="authorHelp" class="form-text text-muted">请输入作者信息</small>
+            {{ render_error(form, 'author') }}
+        </div>
+        <div class="form-group">
+          <label for="publish" class="text-primary">出版商</label>
+          <input name="publish" type="text" class="form-control" id="publish" aria-describedby="publishHelp">
+          <small id="publishHelp" class="form-text text-muted">请输入出版商</small>
+          {{ render_error(form, 'publish') }}
+        </div>
+        <div class="form-group">
+            <label for="price" class="text-primary">价格</label>
+            <input name="price" type="text" class="form-control" id="price" aria-describedby="priceHelp">
+            <small id="priceHelp" class="form-text text-muted">请输入价格</small>
+            {{ render_error(form, 'price') }}
+        </div>
+        <div class="form-group">
+            <label for="category" class="text-primary">归类</label>
+            <input name="category" type="text" class="form-control" id="category" aria-describedby="categoryHelp">
+            <small id="categoryHelp" class="form-text text-muted">请输入归类</small>
+            {{ render_error(form, 'category') }}
+        </div>
+        <div class="form-group">
+            <label for="amount" class="text-primary">数量</label>
+            <input name="amount" type="text" class="form-control" id="amount" aria-describedby="amountHelp">
+            <small id="amountHelp" class="form-text text-muted">请输入数量</small>
+            {{ render_error(form, 'amount') }}
+        </div>
+        <button type="submit" class="btn btn-primary">录入</button>
+</form>

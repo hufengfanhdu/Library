@@ -1,0 +1,23 @@
+{% extends 'layout/layout.html' %}
+{% block head %}  
+<script src="{{url_for('static', filename='js/weather.js')}}"></script>
+{% endblock head %}
+{% block content %}
+  <div class="jumbotron px-5 mb-0" style="height:100%; width: 100%">
+      <div class="card" style="height:100%">
+        <div class="row p-5">
+        <!-- Left show board -->
+        <div class="col-3 list-group ml-5">
+        {% block left %}
+        {% endblock left %}
+        </div>
+        <!-- Medium show board -->
+        <div class="col-8 px-5">
+        {{ render_flash() }}
+        {% block medium %}
+        {% endblock medium %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

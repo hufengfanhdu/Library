@@ -1,0 +1,21 @@
+{% extends 'user/show.html' %}
+{% block title %}
+    Manager
+{% endblock title %}
+{% block left %}  
+    {% include 'user/left/left_manager.html' %}
+{% endblock left %}
+{% block medium %}
+    {% if request.path == url_for('manager.show') %}
+        {% include 'user/medium/manager_user.html' %}
+    {% endif %}
+    {% if request.path == url_for('manager.book') %}
+        {% include 'user/medium/manager_book.html' %}
+    {% endif %}
+    {% if request.path == url_for('manager.add_book') %}
+        {% include 'user/medium/book_add.html' %}
+    {% endif %}
+    {% if request.path == url_for('manager.show_borrow') %}
+        {% include 'user/medium/borrow.html' %}
+    {% endif %}
+{% endblock medium %}
